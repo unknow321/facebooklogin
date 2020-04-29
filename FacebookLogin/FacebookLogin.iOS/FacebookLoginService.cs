@@ -2,6 +2,7 @@
 using FacebookLogin.iOS;
 using Foundation;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -15,8 +16,14 @@ namespace FacebookLogin.iOS
         {
             loginButton = new LoginButton();
             loginButton.Delegate = this;
+            loginButton.Permissions = (new List<string>() { "public_profile", "email"}).ToArray();
+            loginButton.Completed += LoginButton_Completed;
         }
 
+        private void LoginButton_Completed(object sender, LoginButtonCompletedEventArgs e)
+        {
+           
+        }
 
         public void DidComplete(LoginButton loginButton, LoginManagerLoginResult result, NSError error)
         {

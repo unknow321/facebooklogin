@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Facebook.CoreKit;
 using Foundation;
 using UIKit;
 
@@ -24,8 +24,21 @@ namespace FacebookLogin.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
             return base.FinishedLaunching(app, options);
         }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            ApplicationDelegate.SharedInstance.OpenUrl(app, url, options);
+            return base.OpenUrl(app, url, options);
+        }
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+            return base.OpenUrl(application, url, sourceApplication, annotation);
+        }
+
+
     }
 }
