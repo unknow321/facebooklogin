@@ -2,8 +2,8 @@
 using Android.Views;
 using FacebookLogin.Droid;
 using System;
+using System.Collections.Generic;
 using Xamarin.Facebook;
-using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -11,18 +11,15 @@ using Xamarin.Forms.Platform.Android;
 [assembly: Dependency(typeof(FacebookLoginService))]
 namespace FacebookLogin.Droid
 {
-    public class FacebookLoginService : Java.Lang.Object, IFacebookLoginService , ICallbackManager, IFacebookCallback
+    public class FacebookLoginService : Java.Lang.Object, IFacebookLoginService , IFacebookCallback
     {
         private LoginButton loginButton;
-        private ICallbackManager mCallbackManager;
-        private IFacebookCallback facebookCallback;
 
         public FacebookLoginService()
         {
-            loginButton = new LoginButton(Android.App.Application.Context);
-            loginButton.RegisterCallback(this, this);
-
-
+            loginButton = new LoginButton(MainActivity.Activity);
+            loginButton.SetPermissions(new List<string>() { "public_profile", "email" });
+            loginButton.RegisterCallback(MainActivity.Activity.CallbackManager, this);
         }
 
         public void InitButton(StackLayout stackLayout)

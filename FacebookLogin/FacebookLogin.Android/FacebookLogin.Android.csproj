@@ -53,6 +53,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.Facebook.Android">
+      <Version>5.11.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Facebook.Login.Android">
       <Version>5.11.2</Version>
     </PackageReference>
@@ -96,6 +99,11 @@
       <Project>{B510DAC6-386B-44CA-B417-E0C0CC01F135}</Project>
       <Name>FacebookLogin</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
