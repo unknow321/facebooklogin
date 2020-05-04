@@ -4,6 +4,7 @@ using FacebookLogin.Droid;
 using System;
 using System.Collections.Generic;
 using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
 using Xamarin.Facebook.Login.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -25,6 +26,9 @@ namespace FacebookLogin.Droid
         public void InitButton(StackLayout stackLayout)
         {
             stackLayout.Children.Add(loginButton);
+            LoginManager loginManager = LoginManager.Instance;
+            loginManager.LogIn(MainActivity.Activity, new List<string>() { "public_profile", "email" });
+            loginManager.RegisterCallback(MainActivity.Activity.CallbackManager, this);
         }
 
         public bool OnActivityResult(int requestCode, int resultCode, Intent data)

@@ -62,6 +62,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Extension.cs" />
     <Compile Include="FacebookLoginService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

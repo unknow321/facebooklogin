@@ -17,6 +17,10 @@ namespace FacebookLogin
         public MainPage()
         {
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             service = DependencyService.Get<IFacebookLoginService>();
             service.InitButton(rootLayout);
         }
